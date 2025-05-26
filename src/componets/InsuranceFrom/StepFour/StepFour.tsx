@@ -1,6 +1,7 @@
 // src/components/InsuranceForm/StepFour/StepFour.tsx
 import { useState } from 'react'
 import type { StepFourProps } from '../../../types'
+import { useTranslation } from 'react-i18next'
 
 const namePattern    = /^[A-Za-z\u0400-\u04FF\s]+$/
 const emailPattern   = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -17,6 +18,7 @@ export default function StepFour({
   onBack,
   onSubmit,
 }: StepFourProps) {
+  const { t } = useTranslation()
   const [fullName, setFullName] = useState(initFullName)
   const [email,    setEmail]    = useState(initEmail)
   const [mobile,   setMobile]   = useState(initMobile)
@@ -61,11 +63,15 @@ export default function StepFour({
 
   return (
     <div className="p-6 w-full space-y-6">
-      <h2 className="text-xl font-semibold">Введите личные данные</h2>
+      <h2 className="text-xl font-semibold">
+        {t('stepFour.title')}
+      </h2>
 
       {/* ФИО */}
       <div>
-        <label className="block text-sm font-medium text-gray-700">ФИО</label>
+        <label className="block text-sm font-medium text-gray-700">
+          {t('stepFour.fields.fullName')}
+        </label>
         <input
           type="text"
           value={fullName}
@@ -74,13 +80,17 @@ export default function StepFour({
           className={inputClass(errorFullName)}
         />
         {errorFullName && (
-          <p className="mt-1 text-red-500 text-xs">Только буквы и пробелы.</p>
+          <p className="mt-1 text-red-500 text-xs">
+            {t('stepFour.errors.fullName')}
+          </p>
         )}
       </div>
 
       {/* Email */}
       <div>
-        <label className="block text-sm font-medium text-gray-700">Email</label>
+        <label className="block text-sm font-medium text-gray-700">
+          {t('stepFour.fields.email')}
+        </label>
         <input
           type="email"
           value={email}
@@ -89,29 +99,37 @@ export default function StepFour({
           className={inputClass(errorEmail)}
         />
         {errorEmail && (
-          <p className="mt-1 text-red-500 text-xs">Неверный формат email.</p>
+          <p className="mt-1 text-red-500 text-xs">
+            {t('stepFour.errors.email')}
+          </p>
         )}
       </div>
 
       {/* Телефон */}
       <div>
-        <label className="block text-sm font-medium text-gray-700">Телефон</label>
+        <label className="block text-sm font-medium text-gray-700">
+          {t('stepFour.fields.mobile')}
+        </label>
         <input
           type="tel"
-          placeholder="+7XXXXXXXXXX"
+          placeholder={t('stepFour.placeholders.mobile')}
           value={mobile}
           onChange={e => setMobile(e.target.value)}
           onBlur={() => setTouched(t => ({ ...t, mobile: true }))}
           className={inputClass(errorMobile)}
         />
         {errorMobile && (
-          <p className="mt-1 text-red-500 text-xs">Формат +7XXXXXXXXXX.</p>
+          <p className="mt-1 text-red-500 text-xs">
+            {t('stepFour.errors.mobile')}
+          </p>
         )}
       </div>
 
       {/* ИИН */}
       <div>
-        <label className="block text-sm font-medium text-gray-700">ИИН</label>
+        <label className="block text-sm font-medium text-gray-700">
+          {t('stepFour.fields.iin')}
+        </label>
         <input
           type="text"
           maxLength={12}
@@ -121,13 +139,17 @@ export default function StepFour({
           className={inputClass(errorIin)}
         />
         {errorIin && (
-          <p className="mt-1 text-red-500 text-xs">Должно быть ровно 12 цифр.</p>
+          <p className="mt-1 text-red-500 text-xs">
+            {t('stepFour.errors.iin')}
+          </p>
         )}
       </div>
 
       {/* Пин-код */}
       <div>
-        <label className="block text-sm font-medium text-gray-700">Пин-код</label>
+        <label className="block text-sm font-medium text-gray-700">
+          {t('stepFour.fields.pincode')}
+        </label>
         <input
           type="text"
           maxLength={6}
@@ -137,7 +159,9 @@ export default function StepFour({
           className={inputClass(errorPincode)}
         />
         {errorPincode && (
-          <p className="mt-1 text-red-500 text-xs">Ровно 6 цифр.</p>
+          <p className="mt-1 text-red-500 text-xs">
+            {t('stepFour.errors.pincode')}
+          </p>
         )}
       </div>
 
@@ -148,7 +172,7 @@ export default function StepFour({
           onClick={onBack}
           className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
         >
-          Назад
+          {t('stepFour.buttons.back')}
         </button>
         <button
           type="button"
@@ -157,7 +181,7 @@ export default function StepFour({
           className={`px-4 py-2 rounded-lg text-white font-medium transition-colors
             ${isValid ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-300 cursor-not-allowed'}`}
         >
-          Далее
+          {t('stepFour.buttons.next')}
         </button>
       </div>
     </div>

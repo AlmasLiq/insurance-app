@@ -1,9 +1,10 @@
 // src/components/InsuranceForm/StepThree/StepThree.tsx
 import { useState } from 'react'
-import mockAddOns from '../../../mockData/mockAddOn';
+import mockAddOns from '../../../mockData/mockAddOn'
+import { useTranslation } from 'react-i18next'
 
 export interface StepThreeProps {
-  selectedAddOns: string[]            // array of add-on IDs already chosen (может быть [])
+  selectedAddOns: string[]
   onBack: () => void
   onSubmit: (fields: { addOns: string[]; total: number }) => void
 }
@@ -13,6 +14,7 @@ export default function StepThree({
   onBack,
   onSubmit,
 }: StepThreeProps) {
+  const { t } = useTranslation()
   const [selected, setSelected] = useState<string[]>(initial)
 
   const toggle = (id: string) =>
@@ -26,8 +28,12 @@ export default function StepThree({
 
   return (
     <div className="p-6 w-full max-w-lg space-y-6">
-      <h2 className="text-lg font-medium">Выбор дополнительных опций</h2>
-      <div className="text-sm text-gray-600">Все опции действительны 1 год</div>
+      <h2 className="text-lg font-medium">
+        {t('stepThree.title')}
+      </h2>
+      <div className="text-sm text-gray-600">
+        {t('stepThree.info')}
+      </div>
 
       <div className="space-y-4">
         {mockAddOns.map(addOn => {
@@ -55,10 +61,14 @@ export default function StepThree({
                       : 'text-green-500 border-green-500'}
                   `}
                 >
-                  {isActive ? 'Добавлено' : 'Добавить'}
+                  {isActive
+                    ? t('stepThree.buttons.added')
+                    : t('stepThree.buttons.add')}
                 </button>
               </div>
-              <p className="text-sm text-gray-600 mb-4">{addOn.description}</p>
+              <p className="text-sm text-gray-600 mb-4">
+                {addOn.description}
+              </p>
               <div className="border-t border-gray-200 pt-2 text-sm font-semibold">
                 ₸{addOn.price.toFixed(2)}
               </div>
@@ -68,26 +78,28 @@ export default function StepThree({
       </div>
 
       <div className="flex justify-between items-center pt-4">
-        <div className="text-sm font-medium">Итого: ₸{total.toFixed(2)}</div>
+        <div className="text-sm font-medium">
+          {t('stepThree.total')}: ₸{total.toFixed(2)}
+        </div>
         <div className="space-x-2">
           <button
             type="button"
             onClick={onBack}
             className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
           >
-            Назад
+            {t('stepThree.buttons.back')}
           </button>
           <button
             type="button"
             onClick={() => onSubmit({ addOns: selected, total })}
+            disabled={selected.length === 0}
             className={`px-4 py-2 rounded-lg text-white font-medium transition-colors
               ${selected.length > 0
                 ? 'bg-green-600 hover:bg-green-700'
                 : 'bg-gray-300 cursor-not-allowed'}
             `}
-            disabled={selected.length === 0}
           >
-            Далее
+            {t('stepThree.buttons.next')}
           </button>
         </div>
       </div>

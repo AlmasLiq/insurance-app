@@ -1,0 +1,124 @@
+{
+  "header": {
+    "lang_ru": "RU",
+    "lang_en": "EN",
+    "lang_kz": "KZ"
+  },
+  "insurance": {
+    "car": "Car",
+    "moto": "Moto",
+    "title": "Insurance for {{vehicle}}",
+    "subtitle": "Enter your {{vehicle}} registration number below to start.",
+    "placeholder": "000AAA01",
+    "button": "Calculate",
+    "imageAlt": "{{vehicle}} image"
+  },
+  "form": {
+    "steps": [
+      "Vehicle details",
+      "Plan selection",
+      "Add-ons",
+      "Personal data",
+      "Confirmation"
+    ]
+  },
+  "stepOne": {
+    "title": "Fill in your vehicle details",
+    "fields": {
+      "makeModel": "Manufacturer & Model",
+      "manufactureYear": "Manufacture Year",
+      "regDate": "Registration Date",
+      "policyStatus": "Policy Status"
+    },
+    "placeholders": {
+      "select": "– select –",
+      "year": "– select year –"
+    },
+    "statusOptions": {
+      "notExpired": "Not expired",
+      "expired90": "Expired within 90 days",
+      "expired90Plus": "Expired over 90 days"
+    },
+    "buttons": {
+      "next": "Next"
+    }
+  },
+  "stepTwo": {
+    "title": "Select a plan",
+    "yearLabel": "Year: {{year}}",
+    "tenureLabel": "Select tenure",
+    "tenures_zero": "0 years",
+    "tenures_one": "{{count}} year",
+    "tenures_other": "{{count}} years",
+    "idvLabel": "IDV (Insured Value)",
+    "buttons": {
+      "more": "More details",
+      "back": "Back",
+      "next": "Next",
+      "close": "Close"
+    },
+    "modal": {
+      "coveredTitle": "What’s covered",
+      "notCoveredTitle": "What’s not covered"
+    }
+  },
+  "stepThree": {
+    "title": "Select additional add-ons",
+    "info": "All add-ons are valid for 1 year",
+    "buttons": {
+      "add": "Add",
+      "added": "Added",
+      "back": "Back",
+      "next": "Next"
+    },
+    "total": "Total"
+  },
+  "stepFour": {
+    "title": "Enter personal information",
+    "fields": {
+      "fullName": "Full name",
+      "email": "Email",
+      "mobile": "Phone",
+      "iin": "IIN",
+      "pincode": "Pincode"
+    },
+    "placeholders": {
+      "mobile": "+7XXXXXXXXXX"
+    },
+    "errors": {
+      "fullName": "Only letters and spaces.",
+      "email": "Invalid email format.",
+      "mobile": "Format +7XXXXXXXXXX.",
+      "iin": "Must be exactly 12 digits.",
+      "pincode": "Exactly 6 digits."
+    },
+    "buttons": {
+      "back": "Back",
+      "next": "Next"
+    }
+  },
+  "stepFive": {
+    "title": "Your policy details",
+    "company": "Insurance company",
+    "policyNumber": "Policy number",
+    "fullName": "Full name",
+    "iin": "IIN",
+    "issueDate": "Issue date",
+    "startDate": "Start date",
+    "endDate": "End date",
+    "status": "Status",
+    "vehicleSection": "Vehicle information",
+    "grid": {
+      "regNumber": "Reg. No.",
+      "year": "Year",
+      "transport": "Vehicle",
+      "model": "Model"
+    },
+    "source": "Provided by: State Credit Bureau"
+  },
+  "insuranceSelector": {
+    "headline": "Car/Moto Insurance",
+    "subtitle1": "Get insured with ease",
+    "subtitle2": "No more paperwork! Insure your car and motorcycle today."
+  }
+}

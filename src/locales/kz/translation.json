@@ -1,0 +1,124 @@
+{
+  "header": {
+    "lang_ru": "RU",
+    "lang_en": "EN",
+    "lang_kz": "KZ"
+  },
+  "insurance": {
+    "car": "Авто",
+    "moto": "Мото",
+    "title": "Страхование {{vehicle}}",
+    "subtitle": "Введите регистрационный номер вашего {{vehicle}} ниже, чтобы начать.",
+    "placeholder": "000AAA01",
+    "button": "Рассчитать",
+    "imageAlt": "Изображение {{vehicle}}"
+  },
+  "form": {
+    "steps": [
+      "Детали транспорта",
+      "Выбор плана",
+      "Выбор дополнительных опций",
+      "Личные данные",
+      "Подтверждение"
+    ]
+  },
+  "stepOne": {
+    "title": "Заполните данные про ваш транспорт",
+    "fields": {
+      "makeModel": "Производитель & Модель",
+      "manufactureYear": "Год выпуска",
+      "regDate": "Дата регистрации",
+      "policyStatus": "Статус полиса"
+    },
+    "placeholders": {
+      "select": "– выберите –",
+      "year": "– выберите год –"
+    },
+    "statusOptions": {
+      "notExpired": "Не просрочен",
+      "expired90": "Истёк за последние 90 дней",
+      "expired90Plus": "Истёк более 90 дней"
+    },
+    "buttons": {
+      "next": "Далее"
+    }
+  },
+  "stepTwo": {
+    "title": "Выбор плана",
+    "yearLabel": "Год: {{year}}",
+    "tenureLabel": "Выберите срок действия",
+    "tenures_zero": "0 лет",
+    "tenures_one": "1 год",
+    "tenures_other": "{{count}} лет",
+    "idvLabel": "IDV (Страховая сумма)",
+    "buttons": {
+      "more": "Подробнее о покрытии",
+      "back": "Назад",
+      "next": "Далее",
+      "close": "Закрыть"
+    },
+    "modal": {
+      "coveredTitle": "Что покрывается",
+      "notCoveredTitle": "Что не покрывается"
+    }
+  },
+  "stepThree": {
+    "title": "Выбор дополнительных опций",
+    "info": "Все опции действительны 1 год",
+    "buttons": {
+      "add": "Добавить",
+      "added": "Добавлено",
+      "back": "Назад",
+      "next": "Далее"
+    },
+    "total": "Итого"
+  },
+  "stepFour": {
+    "title": "Введите личные данные",
+    "fields": {
+      "fullName": "ФИО",
+      "email": "Email",
+      "mobile": "Телефон",
+      "iin": "ИИН",
+      "pincode": "Пин-код"
+    },
+    "placeholders": {
+      "mobile": "+7XXXXXXXXXX"
+    },
+    "errors": {
+      "fullName": "Только буквы и пробелы.",
+      "email": "Неверный формат email.",
+      "mobile": "Формат +7XXXXXXXXXX.",
+      "iin": "Должно быть ровно 12 цифр.",
+      "pincode": "Ровно 6 цифр."
+    },
+    "buttons": {
+      "back": "Назад",
+      "next": "Далее"
+    }
+  },
+  "stepFive": {
+    "title": "Сведения о вашем страховом полисе",
+    "company": "Страховая компания",
+    "policyNumber": "Номер полиса",
+    "fullName": "ФИО",
+    "iin": "ИИН",
+    "issueDate": "Дата выдачи",
+    "startDate": "Дата начала",
+    "endDate": "Дата окончания",
+    "status": "Статус",
+    "vehicleSection": "Данные по транспортному средству",
+    "grid": {
+      "regNumber": "ГРНЗ",
+      "year": "Год",
+      "transport": "Транспорт",
+      "model": "Модель"
+    },
+    "source": "Предоставлено: Государственное кредитное бюро"
+  },
+  "insuranceSelector": {
+    "headline": "Авто/Мото Страхование",
+    "subtitle1": "Оформить страховку — просто",
+    "subtitle2": "Больше никакой бумажной волокиты! Застрахуйте свой автомобиль и мотоцикл уже сегодня."
+  }
+}

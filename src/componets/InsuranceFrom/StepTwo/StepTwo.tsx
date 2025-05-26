@@ -1,7 +1,8 @@
 // src/components/InsuranceForm/StepTwo/StepTwo.tsx
 import { useState } from 'react'
-import type { Plan } from '../../../types';
-import plans from '../../../mockData/mockPlan';
+import type { Plan } from '../../../types'
+import plans from '../../../mockData/mockPlan'
+import { useTranslation } from 'react-i18next'
 
 export interface StepTwoProps {
   onBack: () => void
@@ -9,6 +10,7 @@ export interface StepTwoProps {
 }
 
 export default function StepTwo({ onBack, onSubmit }: StepTwoProps) {
+  const { t } = useTranslation()
   const currentYear = new Date().getFullYear()
   const tenures = [1, 2, 3]
 
@@ -18,42 +20,39 @@ export default function StepTwo({ onBack, onSubmit }: StepTwoProps) {
 
   const selectedPlan = plans.find(p => p.id === selectedPlanId) ?? null
   const idv = selectedPlan ? selectedPlan.pricePerYear * selectedTenure : 0
-
   const canContinue = !!selectedPlan
 
   return (
     <>
-      {/* План выбора */}
       <div className="p-6 w-full max-w-lg space-y-6">
-        <h2 className="text-lg font-medium">Выбор плана</h2>
+        <h2 className="text-lg font-medium">{t('stepTwo.title')}</h2>
 
-        {/* Год и редактировать */}
         <div className="bg-gray-100 rounded-md p-4 flex justify-between items-center">
-          <span>Год: {currentYear}</span>
+          <span>{t('stepTwo.yearLabel', { year: currentYear })}</span>
         </div>
 
-        {/* Срок полиса */}
         <div>
-          <div className="mb-2 text-sm font-medium">Выберите срок действия</div>
+          <div className="mb-2 text-sm font-medium">
+            {t('stepTwo.tenureLabel')}
+          </div>
           <div className="flex gap-2">
-            {tenures.map(t => (
+            {tenures.map((n) => (
               <button
-                key={t}
-                onClick={() => setSelectedTenure(t)}
-                className={`flex-1 text-center py-2 border rounded-lg transition 
-                  ${selectedTenure === t
+                key={n}
+                onClick={() => setSelectedTenure(n)}
+                className={`flex-1 text-center py-2 border rounded-lg transition
+                  ${selectedTenure === n
                     ? 'bg-green-500 text-white border-green-500'
                     : 'text-green-500 border-green-500'}`}
               >
-                {t} {t === 1 ? 'год' : 'года'}
+                {t('stepTwo.tenures', { count: n })}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Карточки планов */}
         <div className="space-y-4">
-          {plans.map(plan => {
+          {plans.map((plan) => {
             const isActive = plan.id === selectedPlanId
             return (
               <div
@@ -69,16 +68,14 @@ export default function StepTwo({ onBack, onSubmit }: StepTwoProps) {
                   {plan.features.map((f, i) => (
                     <li key={i} className="flex items-center text-sm">
                       <span className="mr-2">
-                        {f.covered
-                          ? isActive ? '✔️' : '✔️'
-                          : '❌'}
+                        {f.covered ? '✔️' : '❌'}
                       </span>
                       {f.description}
                     </li>
                   ))}
                 </ul>
                 <button
-                  onClick={e => {
+                  onClick={(e) => {
                     e.stopPropagation()
                     setModalPlan(plan)
                   }}
@@ -86,53 +83,63 @@ export default function StepTwo({ onBack, onSubmit }: StepTwoProps) {
                     isActive ? 'text-white' : 'text-blue-600'
                   }`}
                 >
-                  Подробнее о покрытии
+                  {t('stepTwo.buttons.more')}
                 </button>
               </div>
             )
           })}
         </div>
 
-        {/* IDV */}
         <div className="bg-gray-50 p-4 rounded-md flex justify-between text-sm">
-          <span>IDV (Страховая сумма)</span>
+          <span>{t('stepTwo.idvLabel')}</span>
           <span>₸{idv.toFixed(2)}</span>
         </div>
 
-        {/* Налоги и продолжить */}
         <div className="flex justify-between items-center">
           <button
             type="button"
             onClick={onBack}
             className="px-4 py-2 rounded-lg text-white font-medium bg-gray-600 hover:bg-gray-700 transition-colors"
->
-            Назад
+          >
+            {t('stepTwo.buttons.back')}
           </button>
-
           <button
-            onClick={() => selectedPlan && onSubmit({ planId: selectedPlan.id, tenure: selectedTenure, idv })}
+            onClick={() =>
+              selectedPlan &&
+              onSubmit({ planId: selectedPlan.id, tenure: selectedTenure, idv })
+            }
             disabled={!canContinue}
             className={`px-4 py-2 rounded-lg text-white font-medium transition-colors
-              ${canContinue
-                ? 'bg-green-600 hover:bg-green-700'
-                : 'bg-gray-300 cursor-not-allowed'}`}
+              ${
+                canContinue
+                  ? 'bg-green-600 hover:bg-green-700'
+                  : 'bg-gray-300 cursor-not-allowed'
+              }`}
           >
-            Далее
+            {t('stepTwo.buttons.next')}
           </button>
         </div>
       </div>
 
-      {/* Модальное окно */}
       {modalPlan && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-6 space-y-4">
             <div className="flex justify-between items-center">
               <h3 className="text-lg font-medium">{modalPlan.name}</h3>
-              <button onClick={() => setModalPlan(null)} className="text-gray-500">✖️</button>
+              <button
+                onClick={() => setModalPlan(null)}
+                className="text-gray-500"
+              >
+                {t('stepTwo.buttons.close')}
+              </button>
             </div>
-            <p className="text-sm mb-2">{modalPlan.benefits.covered.map(b => b.title).join(', ')}.</p>
+            <p className="text-sm mb-2">
+              {modalPlan.benefits.covered.map((b) => b.title).join(', ')}.
+            </p>
             <div>
-              <h4 className="font-semibold">Что покрывается</h4>
+              <h4 className="font-semibold">
+                {t('stepTwo.modal.coveredTitle')}
+              </h4>
               <ul className="list-disc pl-5 space-y-1">
                 {modalPlan.benefits.covered.map((b, i) => (
                   <li key={i}>
@@ -142,7 +149,9 @@ export default function StepTwo({ onBack, onSubmit }: StepTwoProps) {
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold">Что не покрывается</h4>
+              <h4 className="font-semibold">
+                {t('stepTwo.modal.notCoveredTitle')}
+              </h4>
               <ul className="list-disc pl-5 space-y-1">
                 {modalPlan.benefits.notCovered.map((b, i) => (
                   <li key={i}>
@@ -156,7 +165,7 @@ export default function StepTwo({ onBack, onSubmit }: StepTwoProps) {
                 onClick={() => setModalPlan(null)}
                 className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg"
               >
-                Закрыть
+                {t('stepTwo.buttons.close')}
               </button>
             </div>
           </div>

@@ -1,4 +1,3 @@
-// src/api.ts
 export type Option = { value: string; label: string };
 
 const cache: Record<string, Option[]> = {};

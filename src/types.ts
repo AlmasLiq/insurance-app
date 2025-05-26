@@ -82,9 +82,6 @@ export interface StepOneProps {
   regDate:         string
   policyStatus:    string
 
-  /**
-   * Принимает одно или несколько полей VehicleDetails
-   */
   onChange: (fields: Partial<VehicleDetails>) => void
 
   onNext: () => void

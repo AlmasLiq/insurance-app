@@ -1,5 +1,5 @@
 // src/pages/VehicleInsuranceForm.tsx
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import type { InsuranceModel} from '../types'
 import StepFive from '../componets/InsuranceFrom/StepFive/StepFive'
 import StepFour from '../componets/InsuranceFrom/StepFour/StepFour'
@@ -7,17 +7,13 @@ import StepOne from '../componets/InsuranceFrom/StepOne/StepOne'
 import StepThree from '../componets/InsuranceFrom/StepThree/StepThree'
 import StepTwo from '../componets/InsuranceFrom/StepTwo/StepTwo'
 import SidebarSteps from '../componets/SidebarSteps/SidebarSteps'
+import { useTranslation } from 'react-i18next'
 
 export default function VehicleInsuranceForm() {
-  const steps = [
-    'Детали транспорта',
-    'Выбор плана',
-    'Выбор дополнительных опций',
-    'Личные данные',
-    'Подтверждение',
-  ]
 
+  const { t } = useTranslation()
 
+  const steps = t('form.steps', { returnObjects: true }) as string[]
   const [step, setStep] = useState(0)
   const [data, setData] = useState<InsuranceModel>({
     // Step 1
@@ -47,9 +43,6 @@ export default function VehicleInsuranceForm() {
     manufactureYear: '',
   })
 
-  useEffect(() => {
-    console.log(data)
-  }, [data])
 
   const updateFields = (fields: Partial<InsuranceModel>) =>
     setData(d => ({ ...d, ...fields }))
