@@ -6,7 +6,6 @@ function Header() {
     <Link to="/">
       <img src="\src\assets\vinsurance_logo.svg" alt="logo" />
     </Link>
-    <button className="w-20 h-12 bg-amber-900 font-">Найти страховку</button>
   </div>
   )
 }
