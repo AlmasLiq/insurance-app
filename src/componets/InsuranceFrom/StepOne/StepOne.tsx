@@ -1,10 +1,8 @@
-// src/components/InsuranceForm/StepOne/StepOne.tsx
 import { ChevronDownIcon, CalendarDaysIcon } from '@heroicons/react/24/outline'
 import type { SharedDataContext, StepOneProps } from '../../../types'
 import { useOutletContext } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
-// генерируем список годов от 1980 до текущего
 const currentYear = new Date().getFullYear()
 const yearOptions = Array.from(
   { length: currentYear - 1980 + 1 },

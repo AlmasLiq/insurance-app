@@ -1,4 +1,3 @@
-// src/components/Header/Header.tsx
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import logo from '../../assets/react.svg'

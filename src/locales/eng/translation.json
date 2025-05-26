@@ -13,11 +13,31 @@
     "button": "Calculate",
     "imageAlt": "{{vehicle}} image"
   },
+  "addOns": [
+    {
+      "id": "personal-accident",
+      "name": "Personal Accident Cover",
+      "description": "This add-on covers injury or death of the vehicle owner (up to ₸15,000,000).",
+      "price": 350
+    },
+    {
+      "id": "roadside-assist",
+      "name": "24/7 Roadside Assistance",
+      "description": "Breakdown help, towing, fuel delivery, and minor repairs on the go.",
+      "price": 500
+    },
+    {
+      "id": "zero-dep",
+      "name": "Zero Depreciation",
+      "description": "Full repair without accounting for component wear and tear.",
+      "price": 800
+    }
+  ],
   "form": {
     "steps": [
       "Vehicle details",
       "Plan selection",
-      "Add-ons",
+      "Add-Ons",
       "Personal data",
       "Confirmation"
     ]
@@ -36,15 +56,15 @@
     },
     "statusOptions": {
       "notExpired": "Not expired",
-      "expired90": "Expired within 90 days",
-      "expired90Plus": "Expired over 90 days"
+      "expired90": "Expired within the last 90 days",
+      "expired90Plus": "Expired over 90 days ago"
     },
     "buttons": {
       "next": "Next"
     }
   },
   "stepTwo": {
-    "title": "Select a plan",
+    "title": "Plan selection",
     "yearLabel": "Year: {{year}}",
     "tenureLabel": "Select tenure",
     "tenures_zero": "0 years",
@@ -63,8 +83,8 @@
     }
   },
   "stepThree": {
-    "title": "Select additional add-ons",
-    "info": "All add-ons are valid for 1 year",
+    "title": "Add-On selection",
+    "info": "All add-Ons are valid for 1 year",
     "buttons": {
       "add": "Add",
       "added": "Added",
@@ -76,7 +96,7 @@
   "stepFour": {
     "title": "Enter personal information",
     "fields": {
-      "fullName": "Full name",
+      "fullName": "Full Name",
       "email": "Email",
       "mobile": "Phone",
       "iin": "IIN",
@@ -86,11 +106,11 @@
       "mobile": "+7XXXXXXXXXX"
     },
     "errors": {
-      "fullName": "Only letters and spaces.",
+      "fullName": "Only letters and spaces allowed.",
       "email": "Invalid email format.",
       "mobile": "Format +7XXXXXXXXXX.",
       "iin": "Must be exactly 12 digits.",
-      "pincode": "Exactly 6 digits."
+      "pincode": "Exactly 6 digits required."
     },
     "buttons": {
       "back": "Back",
@@ -99,15 +119,15 @@
   },
   "stepFive": {
     "title": "Your policy details",
-    "company": "Insurance company",
-    "policyNumber": "Policy number",
-    "fullName": "Full name",
+    "company": "Insurance Company",
+    "policyNumber": "Policy Number",
+    "fullName": "Full Name",
     "iin": "IIN",
-    "issueDate": "Issue date",
-    "startDate": "Start date",
-    "endDate": "End date",
+    "issueDate": "Issue Date",
+    "startDate": "Start Date",
+    "endDate": "End Date",
     "status": "Status",
-    "vehicleSection": "Vehicle information",
+    "vehicleSection": "Vehicle Information",
     "grid": {
       "regNumber": "Reg. No.",
       "year": "Year",
@@ -118,7 +138,48 @@
   },
   "insuranceSelector": {
     "headline": "Car/Moto Insurance",
-    "subtitle1": "Get insured with ease",
+    "subtitle1": "Getting insured is simple",
     "subtitle2": "No more paperwork! Insure your car and motorcycle today."
-  }
+  },
+  "plans": [
+    {
+      "id": "comprehensive",
+      "name": "Full Coverage Package",
+      "features": [
+        { "description": "Covers damage to your vehicle", "covered": true },
+        { "description": "Covers damage to third-party vehicle and property", "covered": true }
+      ],
+      "benefits": {
+        "covered": [
+          { "title": "Accidents", "description": "Covers repair/replacement if your vehicle is damaged in an accident." },
+          { "title": "Theft", "description": "If your vehicle is stolen, we will reimburse its value according to your policy." },
+          { "title": "Third-party injury", "description": "Covers death or injury of third parties during an accident." }
+        ],
+        "notCovered": [
+          { "title": "Wear and tear", "description": "Does not cover wear of parts such as tires, tubes, and engine." },
+          { "title": "Illegal driving", "description": "Does not cover traffic violations such as driving without a license or under the influence." }
+        ]
+      },
+      "pricePerYear": 10000
+    },
+    {
+      "id": "third-party",
+      "name": "Third-Party Package",
+      "features": [
+        { "description": "Covers damage to your vehicle", "covered": false },
+        { "description": "Covers damage to third-party vehicle and property", "covered": true }
+      ],
+      "benefits": {
+        "covered": [
+          { "title": "Theft", "description": "If your vehicle is stolen, we will reimburse its value according to your policy." }
+        ],
+        "notCovered": [
+          { "title": "Accidents", "description": "Does not cover repair/replacement after an accident." },
+          { "title": "Wear and tear", "description": "Does not cover wear of parts." },
+          { "title": "Illegal driving", "description": "Does not cover traffic violations." }
+        ]
+      },
+      "pricePerYear": 5000
+    }
+  ]
 }

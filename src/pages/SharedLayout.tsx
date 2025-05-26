@@ -1,11 +1,9 @@
-// src/pages/SharedLayout.tsx
 import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { getCars, getMotos, type Option } from '../api';
 import Header from '../componets/Header/Header';
 
 function SharedLayout() {
-  // Явно указываем, что это Option[]
   const [cars,  setCars]  = useState<Option[]>([]);
   const [motos, setMotos] = useState<Option[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -31,7 +29,6 @@ function SharedLayout() {
     <>
       <Header />
 
-      {/* Дочерние роуты получат cars/motos через useOutletContext */}
       <Outlet context={{ cars, motos }} />
     </>
   );

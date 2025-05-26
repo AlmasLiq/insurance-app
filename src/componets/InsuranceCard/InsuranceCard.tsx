@@ -1,4 +1,3 @@
-// src/components/InsuranceCard/InsuranceCard.tsx
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -18,7 +17,6 @@ export default function InsuranceCard({ selected }: SelectedProps) {
   const [regNo, setRegNo] = useState('')
   const [touched, setTouched] = useState(false)
 
-  // шаблон: 3 цифры, 3 буквы A–Z, 2 цифры, без пробелов
   const plateRegex = /^\d{3}[A-Z]{3}\d{2}$/
   const normalized = regNo.trim().toUpperCase()
   const isValid = plateRegex.test(normalized)

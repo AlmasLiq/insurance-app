@@ -1,5 +1,3 @@
-// src/types.ts
-
 import React from 'react'
 
 export type VehicleType = 'bike' | 'car'

@@ -1,4 +1,3 @@
-// src/components/InsuranceForm/StepFour/StepFour.tsx
 import { useState } from 'react'
 import type { StepFourProps } from '../../../types'
 import { useTranslation } from 'react-i18next'

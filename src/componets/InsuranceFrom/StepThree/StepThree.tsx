@@ -1,7 +1,12 @@
-// src/components/InsuranceForm/StepThree/StepThree.tsx
 import { useState } from 'react'
-import mockAddOns from '../../../mockData/mockAddOn'
 import { useTranslation } from 'react-i18next'
+
+export interface AddOn {
+  id: string
+  name: string
+  description: string
+  price: number
+}
 
 export interface StepThreeProps {
   selectedAddOns: string[]
@@ -15,6 +20,8 @@ export default function StepThree({
   onSubmit,
 }: StepThreeProps) {
   const { t } = useTranslation()
+
+  const addOns = t('addOns', { returnObjects: true }) as AddOn[]
   const [selected, setSelected] = useState<string[]>(initial)
 
   const toggle = (id: string) =>
@@ -22,21 +29,17 @@ export default function StepThree({
       ids.includes(id) ? ids.filter(x => x !== id) : [...ids, id]
     )
 
-  const total = mockAddOns
+  const total = addOns
     .filter(a => selected.includes(a.id))
     .reduce((sum, a) => sum + a.price, 0)
 
   return (
     <div className="p-6 w-full max-w-lg space-y-6">
-      <h2 className="text-lg font-medium">
-        {t('stepThree.title')}
-      </h2>
-      <div className="text-sm text-gray-600">
-        {t('stepThree.info')}
-      </div>
+      <h2 className="text-lg font-medium">{t('stepThree.title')}</h2>
+      <div className="text-sm text-gray-600">{t('stepThree.info')}</div>
 
       <div className="space-y-4">
-        {mockAddOns.map(addOn => {
+        {addOns.map(addOn => {
           const isActive = selected.includes(addOn.id)
           return (
             <div
@@ -45,8 +48,7 @@ export default function StepThree({
               className={`cursor-pointer rounded-lg p-4 transition
                 ${isActive
                   ? 'bg-green-50 border-green-500 text-gray-900'
-                  : 'border border-green-500 text-gray-700'}
-              `}
+                  : 'border border-green-500 text-gray-700'}`}
             >
               <div className="flex justify-between items-center mb-2">
                 <h3 className="font-medium">{addOn.name}</h3>
@@ -58,8 +60,7 @@ export default function StepThree({
                   className={`px-3 py-1 rounded-lg border transition
                     ${isActive
                       ? 'bg-green-500 text-white border-green-500'
-                      : 'text-green-500 border-green-500'}
-                  `}
+                      : 'text-green-500 border-green-500'}`}
                 >
                   {isActive
                     ? t('stepThree.buttons.added')
@@ -96,8 +97,7 @@ export default function StepThree({
             className={`px-4 py-2 rounded-lg text-white font-medium transition-colors
               ${selected.length > 0
                 ? 'bg-green-600 hover:bg-green-700'
-                : 'bg-gray-300 cursor-not-allowed'}
-            `}
+                : 'bg-gray-300 cursor-not-allowed'}`}
           >
             {t('stepThree.buttons.next')}
           </button>

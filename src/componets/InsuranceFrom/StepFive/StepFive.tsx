@@ -1,4 +1,3 @@
-// src/components/InsuranceForm/StepFive/StepFive.tsx
 import type { PolicyDetails } from '../../../types'
 import { addYearToDate } from '../../../utils/addYearToDate'
 import getTodayData from '../../../utils/getTodayData'

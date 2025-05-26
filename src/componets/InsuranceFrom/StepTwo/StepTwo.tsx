@@ -1,8 +1,6 @@
-// src/components/InsuranceForm/StepTwo/StepTwo.tsx
 import { useState } from 'react'
-import type { Plan } from '../../../types'
-import plans from '../../../mockData/mockPlan'
 import { useTranslation } from 'react-i18next'
+import type { Plan } from '../../../types'
 
 export interface StepTwoProps {
   onBack: () => void
@@ -13,6 +11,8 @@ export default function StepTwo({ onBack, onSubmit }: StepTwoProps) {
   const { t } = useTranslation()
   const currentYear = new Date().getFullYear()
   const tenures = [1, 2, 3]
+
+  const plans = t('plans', { returnObjects: true }) as Plan[]
 
   const [selectedTenure, setSelectedTenure] = useState(3)
   const [selectedPlanId, setSelectedPlanId] = useState<string | null>(null)
@@ -36,7 +36,7 @@ export default function StepTwo({ onBack, onSubmit }: StepTwoProps) {
             {t('stepTwo.tenureLabel')}
           </div>
           <div className="flex gap-2">
-            {tenures.map((n) => (
+            {tenures.map(n => (
               <button
                 key={n}
                 onClick={() => setSelectedTenure(n)}
@@ -52,7 +52,7 @@ export default function StepTwo({ onBack, onSubmit }: StepTwoProps) {
         </div>
 
         <div className="space-y-4">
-          {plans.map((plan) => {
+          {plans.map(plan => {
             const isActive = plan.id === selectedPlanId
             return (
               <div
@@ -75,7 +75,7 @@ export default function StepTwo({ onBack, onSubmit }: StepTwoProps) {
                   ))}
                 </ul>
                 <button
-                  onClick={(e) => {
+                  onClick={e => {
                     e.stopPropagation()
                     setModalPlan(plan)
                   }}
@@ -133,13 +133,13 @@ export default function StepTwo({ onBack, onSubmit }: StepTwoProps) {
                 {t('stepTwo.buttons.close')}
               </button>
             </div>
+
             <p className="text-sm mb-2">
-              {modalPlan.benefits.covered.map((b) => b.title).join(', ')}.
+              {modalPlan.benefits.covered.map(b => b.title).join(', ')}.
             </p>
+
             <div>
-              <h4 className="font-semibold">
-                {t('stepTwo.modal.coveredTitle')}
-              </h4>
+              <h4 className="font-semibold">{t('stepTwo.modal.coveredTitle')}</h4>
               <ul className="list-disc pl-5 space-y-1">
                 {modalPlan.benefits.covered.map((b, i) => (
                   <li key={i}>
@@ -148,10 +148,9 @@ export default function StepTwo({ onBack, onSubmit }: StepTwoProps) {
                 ))}
               </ul>
             </div>
+
             <div>
-              <h4 className="font-semibold">
-                {t('stepTwo.modal.notCoveredTitle')}
-              </h4>
+              <h4 className="font-semibold">{t('stepTwo.modal.notCoveredTitle')}</h4>
               <ul className="list-disc pl-5 space-y-1">
                 {modalPlan.benefits.notCovered.map((b, i) => (
                   <li key={i}>
@@ -160,6 +159,7 @@ export default function StepTwo({ onBack, onSubmit }: StepTwoProps) {
                 ))}
               </ul>
             </div>
+
             <div className="flex justify-end">
               <button
                 onClick={() => setModalPlan(null)}
