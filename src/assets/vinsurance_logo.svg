@@ -1,0 +1,9 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="24" viewBox="0 0 160 24">
+  <text x="0" y="18" font-family="Arial, sans-serif" font-size="18">
+    <tspan fill="#4169E1">[</tspan>
+    <tspan fill="black" font-weight="bold">V</tspan>
+    <tspan fill="#4169E1">]</tspan>
+    <tspan fill="black" font-weight="normal">insurance</tspan>
+  </text>
+</svg>
