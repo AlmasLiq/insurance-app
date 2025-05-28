@@ -40,8 +40,4 @@ export async function get(endpoint) {
   return cache[endpoint];
 }
 
-// Алиасы для удобства:
-export const getCarOptions  = () => get('cars');
-export const getMotoOptions = () => get('motos');
-``` реакция: при первом вызове `get('cars')` или `get('motos')` будет HTTP-запрос и сохранение в `cache`, а последующие — уже вернут данные из памяти без новых запросов.
 

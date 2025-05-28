@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import type { SelectedProps } from '../../types'
-import carImg from '../../assets/car.jpg'
-import bikeImg from '../../assets/bike.jpg'
+import carImg from '../../assets/Car.jpg'
+import bikeImg from '../../assets/Bike.jpg'
 
 export default function InsuranceCard({ selected }: SelectedProps) {
   const navigate = useNavigate()
