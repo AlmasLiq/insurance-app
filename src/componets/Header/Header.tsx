@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import logo from '../../assets/react.svg'
+import logo from '../../assets/car-insurance.svg'
 
 export default function Header() {
   const { i18n, t } = useTranslation()
@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <div className="w-full h-12 border-b border-gray-300 bg-white flex justify-between p-8 items-center">
       <Link to="/">
-        <img src={logo} alt="logo" className="h-full" />
+        <img src={logo} alt="" className="h-12" />
       </Link>
       <div className="flex gap-2">
         <button
